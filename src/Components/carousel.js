@@ -7,15 +7,16 @@ const data = [
     { title: "Comment l'innovation RH transforme l'entreprise..." },
     { title: "2Comment l'innovation RH transforme l'entreprise..." },
     { title: "3Comment l'innovation RH transforme l'entreprise..." },
-    { title: "4Comment l'innovation RH transforme l'entreprise..." }
+    { title: "4Comment l'innovation RH transforme l'entreprise..." },
+    { title: "5Comment l'innovation RH transforme l'entreprise..." }
 ];
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
 
 export default function Carousel({ navigation }) {
-    const [index, setIndex] = React.useState(0);
-    const indexRef = React.useRef(index);
-    indexRef.current = index;
+    const [Index, setIndex] = React.useState(0);
+    const indexRef = React.useRef(Index);
+    indexRef.current = Index;
 
     const onScroll = React.useCallback(event => {
         const slideSize = event.nativeEvent.layoutMeasurement.width;
@@ -31,40 +32,66 @@ export default function Carousel({ navigation }) {
     }, []);
 
     return (
-        <FlatList
-            data={data}
-            style= {{flex: 1}}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            pagingEnabled
-            onScroll={onScroll}
-            renderItem={({ item, index }) => (
-                <View
-                    style={{
-                        width: windowWidth - 20,
-                        flex:1,
-                    }}
-                >
-                    <Articleview
-                        name={item.title}
-                        navigation={navigation}
-                        source={images.actu}
-                    />
+        <View
+            style={{
+                flex: 1,
+          
+            }}
+        >
+            <FlatList
+                data={data}
+                style={{ flex: 1 }}
+                showsHorizontalScrollIndicator={false}
+                horizontal
+                pagingEnabled
+                onScroll={onScroll}
+                renderItem={({ item }) => (
+                    <View style={{ width: windowWidth - 20, flex: 1 }}>
+                        <Articleview
+                            name={item.title}
+                            navigation={navigation}
+                            source={images.actu}
+                        />
+                    </View>
+                )}
+                keyExtractor={item => item.title}
+            />
+            <View style={styles.indicatorContainer}>
+                {data.map((image, index) => (
                     <View
-                        style={{
-                            width: 10,
-                            height: 10,
-                            borderRadius: 400 / 2,
-                            marginBottom: 20,
-                            flex:1,
-                            backgroundColor: "grey",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
+                        key={`${image}_${index}`}
+                        style={[
+                            styles.indicator,
+                            (Index == index
+                                ? styles.activeIndicator
+                                : undefined)
+                        ]}
                     />
-                </View>
-            )}
-            keyExtractor={item => item.title}
-        />
+                ))}
+            </View>
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    indicatorContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        width: windowWidth,
+        zIndex: 2,
+    },
+    indicator: {
+        width: 15,
+        height: 15,
+        borderRadius: 7.5,
+        borderColor: "grey",
+        borderWidth: 1,
+        marginHorizontal: 10,
+        marginBottom: 10
+    },
+    activeIndicator: {
+        backgroundColor: "orange",
+        borderWidth: 0
+    }
+});
