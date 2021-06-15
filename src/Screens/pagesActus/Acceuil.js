@@ -23,7 +23,7 @@ import images from "../../images/index";
 const { height, width } = Dimensions.get("window");
 
 function AccueilScreen({ navigation }) {
-    const [modalVisible, setModalVisible] = React.useState(false);
+    const [modalVisible, setModalVisible] = React.useState(true);
 
     const openAcceuil = () => {
         setModalVisible(!modalVisible);

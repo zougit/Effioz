@@ -1,11 +1,30 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image, Modal, Button, Alert } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import images from "../../images";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Image,
+    Modal,
+    Button,
+    Alert,
+    Dimensions
+} from "react-native";
+import {
+    ScrollView,
+    TouchableWithoutFeedback,
+    TouchableOpacity
+} from "react-native-gesture-handler";
+import Webinaire from "../../Components/webinaire";
+import Articleview from "../../Components/articleview";
+import Titre from "../../Components/titre";
+import Video from "../../Components/video";
+import Carousel from "../../Components/carousel";
+import images from "../../images/index";
 
-function AccueilAdminScreen({ navigation }) {
-    const [modalVisible, setModalVisible] = useState(false);
+const { height, width } = Dimensions.get("window");
+
+function AccueilScreen({ navigation }) {
+    const [modalVisible, setModalVisible] = React.useState(true);
 
     const openAcceuil = () => {
         setModalVisible(!modalVisible);
@@ -13,201 +32,155 @@ function AccueilAdminScreen({ navigation }) {
 
     if (!modalVisible) {
         return (
-            <View style={styles.container}>
-                <View style={{ flex: 1, flexDirection: "row", marginTop: 30 }}>
-                    <View
-                        style={{ flexDirection: "column", marginBottom: 20 }}
-                        onStartShouldSetResponder={() =>
-                            alert("met la video en plus grand")
-                        }
-                    >
-                        <Text style={titregauche}>3 questions à</Text>
-                        <Text> voir tout </Text>
+            <ScrollView>
+                <View style={{ flex: 1, margin: 10 }}>
+                    <View style={styles.container}>
+                        <Text style={styles.GrandtitreAccueil}>A la une</Text>
 
-                        <Image
-                            style={styles.video}
-                            source={  images.imgvideo}
+                        <Titre
+                            name={"Actus"}
+                            navigation={navigation}
+                            lien={"Actus"}
                         />
-                        <Text style={styles.titleAccueil}>Sébastien Bazin</Text>
-                        <Text>PDG du groupe Accor</Text>
-                    </View>
 
-                    <View
-                        style={{
-                            flex: 1,
-                            flexDirection: "column",
-                            marginBottom: 10,
-                        }}
-                    >
-                        <Text style={titredroite}> Prochains webiniaires</Text>
-                        <Text
-                            style={{ marginLeft: 20 }}
-                            onPress={() => navigation.navigate("Webinaire")}
+                        <Carousel navigation={navigation} />
+
+                        <View
+                            style={{
+                                marginBottom: 20,
+                                flex: 0.7
+                            }}
                         >
-                            {" "}
-                            voir tout{" "}
-                        </Text>
+                            <Titre
+                                name={"3 questions à"}
+                                navigation={navigation}
+                                lien={"Actus"}
+                            />
+
+                            <Video
+                                source={"http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"}
+                                
+                            />
+
+                            <Text style={styles.titleAccueilActu}>
+                                Sébastien Bazin
+                            </Text>
+                            <Text>PDG du groupe Accor</Text>
+                        </View>
 
                         <View
                             style={{
                                 flex: 1,
-                                flexDirection: "row",
-                                marginTop: 10,
-                                marginLeft: 20,
+                                flexDirection: "column",
+                                marginBottom: 10
                             }}
-                            onStartShouldSetResponder={() =>
-                                navigation.navigate("Agenda")
-                            }
                         >
-                            <Image
-                                style={styles.imagewebinaire}
-                                source={ images.webinaire}
+                            <Titre
+                                name={"Prochains webinaires"}
+                                navigation={navigation}
+                                lien={"Webinaire"}
                             />
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <Text style={{ fontWeight: "bold" }}>
-                                    Fleur Pellerin
-                                </Text>
-                                <Text style={styles.textwebinaire}>
-                                    Ex ministre, femme d'affaire passionée de
-                                    nouvelles technologies
-                                </Text>
-                            </View>
+
+                            <Webinaire
+                                name={"Fleur Pellerin"}
+                                navigation={navigation}
+                                source={images.webinaire}
+                            />
+
+                            <Text style={styles.row} />
+
+                            <Webinaire
+                                name={"Cédric Villani"}
+                                navigation={navigation}
+                                source={images.webinaire2}
+                            />
                         </View>
+                    </View>
 
-                        <Text style={styles.row} />
+                    <View style={{ backgroundColor: "#000" }}>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={() => navigation.navigate("Grp-Admin")}
+                        >
+                            <Text style={{ color: "#fff", fontSize: 20 }}>
+                                Administrer mes groupes
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
 
+                    <Text style={styles.GrandtitreAccueil}>Ressources</Text>
+                    <View
+                        style={{
+                            backgroundColor: "rgba(255, 165, 0, 0.4)"
+                        }}
+                    >
                         <View
                             style={{
-                                flex: 1,
+                                flex: 0.5,
                                 flexDirection: "row",
-                                marginTop: 10,
-                                marginLeft: 20,
+                                marginTop: 5
                             }}
-                            onStartShouldSetResponder={() =>
-                                navigation.navigate("Agenda")
-                            }
                         >
-                            <Image
-                                style={styles.imagewebinaire}
-                                source={  images.webinaire2}
-                            />
-                            <View style={{ flex: 1, flexDirection: "column" }}>
-                                <Text style={{ fontWeight: "bold" }}>
-                                    Cédric Villani
-                                </Text>
-                                <Text style={styles.textwebinaire}>
-                                    Ex ministre, femme d'affaire passionée de
-                                    nouvelles technologies
-                                </Text>
-                            </View>
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate("Programme")}>
+                                <View
+                                    style={{
+                                        flex: 1,
+                                        flexDirection: "column",
+                                        marginBottom: 10
+                                    }}
+                                >
+                                    <Text style={titregaucheRes}>
+                                        Programme
+                                    </Text>
+
+                                    <Text style={styles.textressources}>
+                                        <Text>Derniers modules</Text>
+                                        <Text> *inserer 2 dernier</Text>
+                                        <Text> modules maj*</Text>
+                                    </Text>
+                                </View>
+                            </TouchableWithoutFeedback>
+
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate("Groupes")}>
+                                <View
+                                    style={{
+                                        flex: 1,
+                                        flexDirection: "column",
+                                        marginBottom: 10
+                                    }}
+                                >
+                                    <Text style={titremilieuRes}> Groupes</Text>
+
+                                    <Text style={styles.textressources}>
+                                        <Text>Derniers Grp actifs</Text>
+                                    </Text>
+                                </View>
+                            </TouchableWithoutFeedback>
+
+                            <TouchableWithoutFeedback onPress={() => navigation.navigate("Ressources")}>
+                                <View
+                                    style={{
+                                        flex: 1,
+                                        flexDirection: "column",
+                                        marginBottom: 10
+                                    }}
+                                >
+                                    <Text style={styles.titleAccueilRes}>
+                                        {" "}
+                                        Ressources{" "}
+                                    </Text>
+
+                                    <Text style={styles.textressources}>
+                                        <Text>
+                                            Dernieres ressources regardées
+                                        </Text>
+                                    </Text>
+                                </View>
+                            </TouchableWithoutFeedback>
                         </View>
                     </View>
                 </View>
-
-                <Text style={styles.titleAccueil}> Actus </Text>
-                <Text onPress={() => navigation.navigate("Actus")}>
-                    {" "}
-                    voir tout{" "}
-                </Text>
-                <View
-                    style={{
-                        flex: 0.5,
-                        flexDirection: "row",
-                        marginRight: 10,
-                        marginBottom: 10,
-                    }}
-                    onStartShouldSetResponder={() =>
-                        navigation.navigate("Actu")
-                    }
-                >
-                    <Image
-                        style={styles.imageactu}
-                        source={  images.actu}
-                    />
-                    <View
-                        style={{
-                            flex: 1,
-                            flexDirection: "column",
-                            marginLeft: 10,
-                        }}
-                    >
-                        <Text style={{ fontWeight: "bold", width: 250 }}>
-                            Comment l'innovation RH transforme l'entreprise...{" "}
-                        </Text>
-                        <Text style={styles.textactu}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Sed non risus. Suspendisse lectus tortor,
-                        </Text>
-                    </View>
-                </View>
-                <View style={{ backgroundColor: "#000" }}>
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => navigation.navigate("Grp-Admin")}
-                    >
-                        <Text style={{ color: "#fff", fontSize: 20 }}>
-                            Administrer mes groupes
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-
-                <Text style={styles.titleAccueil}>Ressources</Text>
-
-                <View style={{ flex: 0.5, flexDirection: "row", marginTop: 5 }}>
-                    <View
-                        style={{
-                            flex: 1.2,
-                            flexDirection: "column",
-                            marginBottom: 20,
-                        }}
-                        onStartShouldSetResponder={() =>
-                            navigation.navigate("Programme")
-                        }
-                    >
-                        <Text style={titregauche}>Programme</Text>
-
-                        <Text style={styles.textressources}>
-                            <Text>Derniers modules</Text>
-                            <Text> *inserer 2 dernier</Text>
-                            <Text> modules maj*</Text>
-                        </Text>
-                    </View>
-
-                    <View
-                        style={{
-                            flex: 1,
-                            flexDirection: "column",
-                            marginBottom: 10,
-                        }}
-                        onStartShouldSetResponder={() =>
-                            navigation.navigate("Groupes")
-                        }
-                    >
-                        <Text style={titremilieu}> Groupes</Text>
-
-                        <Text style={styles.textressources}>
-                            <Text>Derniers Grp actifs</Text>
-                        </Text>
-                    </View>
-
-                    <View
-                        style={{
-                            flex: 1,
-                            flexDirection: "column",
-                            marginBottom: 10,
-                        }}
-                        onStartShouldSetResponder={() =>
-                            navigation.navigate("Ressources")
-                        }
-                    >
-                        <Text style={styles.titleAccueil}> Ressources </Text>
-
-                        <Text style={styles.textressources}>
-                            <Text>Dernieres ressources regardées</Text>
-                        </Text>
-                    </View>
-                </View>
-            </View>
+            </ScrollView>
         );
     } else {
         return (
@@ -221,7 +194,7 @@ function AccueilAdminScreen({ navigation }) {
                             style={{
                                 fontSize: 50,
                                 color: "white",
-                                fontWeight: "bold",
+                                fontWeight: "bold"
                             }}
                         >
                             Bonjour user
@@ -232,7 +205,7 @@ function AccueilAdminScreen({ navigation }) {
                         <Text style={titrecitation}>Citation du jour</Text>
                         <Image
                             style={image}
-                            source={  images.citation}
+                            source={images.citation}
                         />
                         <Text style={textperso}>Général Leclerc</Text>
                         <Text style={styles.citation}>
@@ -252,15 +225,26 @@ function AccueilAdminScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "flex-start",
+        justifyContent: "flex-start"
     },
 
-    titleAccueil: {
+    titleAccueilActu: {
         color: "orange",
         fontWeight: "bold",
-        fontSize: 18,
+        fontSize: 18
+    },
+
+    titleAccueilRes: {
+        color: "black",
+        fontWeight: "bold",
+        fontSize: 18
+    },
+
+    GrandtitreAccueil: {
+        color: "darkorange",
+        fontWeight: "bold",
+        textDecorationLine: "underline",
+        fontSize: 25
     },
 
     titleuser: {
@@ -268,25 +252,32 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         justifyContent: "flex-start",
         marginTop: 20,
-        marginLeft: 20,
+        marginLeft: 20
     },
 
     Right: { marginRight: 45 },
     middle: { marginRight: 30, marginLeft: 10 },
-    Left: { marginLeft: 20 },
 
     contentview: {
         flex: 3,
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center"
     },
 
+    button: {
+        alignItems: "center",
+        backgroundColor: "#000",
+        padding: 10,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+    
     personne: { marginBottom: 20 },
 
     textenom: {
         fontWeight: "bold",
         fontSize: 20,
-        color: "orange",
+        color: "orange"
     },
 
     citation: {
@@ -295,68 +286,44 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         color: "white",
         marginLeft: 70,
-        marginRight: 50,
-    },
-
-    textwebinaire: {
-        width: 130,
-        height: 90,
+        marginRight: 50
     },
 
     textressources: {
         width: 110,
-        height: 90,
-    },
-
-    textactu: {
-        width: 230,
-        height: 80,
+        height: 90
     },
 
     row: {
         borderBottomColor: "grey",
-        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth
     },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#000",
-        padding: 10,
-        marginLeft: 20,
-        marginRight: 20,
-    },
+
     titrecitation: {
         color: "white",
         fontSize: 23,
-        marginBottom: 30,
+        marginBottom: 30
     },
 
     image: {
         width: 90,
         height: 90,
-        borderRadius: 400 / 2,
-    },
-
-    imagewebinaire: {
-        width: 70,
-        height: 70,
+        borderRadius: 400 / 2
     },
 
     video: {
-        width: 150,
-        height: 100,
-    },
-
-    imageactu: {
-        width: 110,
-        height: 110,
-    },
+        width: width - 20,
+        height: 210
+    }
 });
 
 const titrecitation = StyleSheet.compose(styles.titrecitation, styles.row);
 const image = StyleSheet.compose(styles.personne, styles.image);
 const textperso = StyleSheet.compose(styles.personne, styles.textenom);
-const titregauche = StyleSheet.compose(styles.Right, styles.titleAccueil);
-const titredroite = StyleSheet.compose(styles.Left, styles.titleAccueil);
-const titremilieu = StyleSheet.compose(styles.middle, styles.titleAccueil);
+const titregaucheRes = StyleSheet.compose(styles.Right, styles.titleAccueilRes);
+const titremilieuRes = StyleSheet.compose(
+    styles.middle,
+    styles.titleAccueilRes
+);
 
-export default AccueilAdminScreen;
+export default AccueilScreen;

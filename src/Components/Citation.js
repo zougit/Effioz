@@ -4,7 +4,6 @@ import citationPlaylist from "../data/citationData";
 
 export default function Citation({ indexsrc }) {
     return (
-        <View style={{backgroundColor: "rgba(255, 165, 0, 0.4)", flex: 1}}>
             <View style={styles.contentview}>
                 <Image
                     style={styles.image}
@@ -15,15 +14,16 @@ export default function Citation({ indexsrc }) {
                     {citationPlaylist[indexsrc].text}
                 </Text>
             </View>
-        </View>
     );
 }
 
 const styles = StyleSheet.create({
     contentview: {
         flex: 1,
+        display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "rgba(255, 165, 0, 0.4)",
     },
     
     textenom: {
@@ -32,16 +32,14 @@ const styles = StyleSheet.create({
         color: "orange",
         marginBottom: 20,
     },
-
+    
     citation: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
         color: "black",
-        marginLeft: 70,
+        marginLeft: 50,
         marginRight: 50,
+        marginBottom: 120,
     },
-
+    
     image: {
         width: 90,
         height: 90,

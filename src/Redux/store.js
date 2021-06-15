@@ -1,6 +1,6 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import { createStore } from "redux";
 import { persistStore, persistCombineReducers } from "redux-persist";
-import FilesystemStorage from "redux-persist-filesystem-storage";
 import GroupReducers from "./Reducers/groupReducer"
 
 const reducer = {
@@ -9,7 +9,7 @@ const reducer = {
 
 const persistConfig = {
 	key: "Effioz",
-	storage: FilesystemStorage,
+	storage: AsyncStorage,
 };
 
 
