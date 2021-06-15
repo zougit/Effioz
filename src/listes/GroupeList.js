@@ -1,9 +1,10 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, ImageStore } from "react-native";
 import {
     FlatList,
     TouchableWithoutFeedback
 } from "react-native-gesture-handler";
+import images from "../images";
 
 function GrpListScreen({ navigation }) {
     const data = [
@@ -26,7 +27,7 @@ function GrpListScreen({ navigation }) {
             >
                 <Image
                     style={{ width: 70, height: 70 }}
-                    source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-grp.png")}
+                    source={ images.grp}
                 />
                 <View
                     style={{ flex: 1, flexDirection: "column", marginLeft: 10 }}

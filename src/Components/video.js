@@ -7,9 +7,7 @@ const { height, width } = Dimensions.get("window");
 export default function video({source}) {
     return (
         <Video
-            source={{
-               uri: source,
-            }}
+            source={ {uri: source}}
             style={styles.video}
             useNativeControls
             resizeMode="contain"

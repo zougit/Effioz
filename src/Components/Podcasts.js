@@ -64,8 +64,7 @@ function Podcasts({indexsrc}) {
         <View style={styles.container}>
             <Image
                 style={styles.albumCover}
-                source={{
-                    uri:
+                source={{ uri: 
                         "http://www.archive.org/download/LibrivoxCdCoverArt8/hamlet_1104.jpg"
                 }}
             />

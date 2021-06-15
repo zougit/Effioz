@@ -10,6 +10,7 @@ import {
     Alert,
 } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import images from "../../images";
 
 function AccueilOrgaScreen({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -39,7 +40,7 @@ function AccueilOrgaScreen({ navigation }) {
 
                             <Image
                                 style={styles.video}
-                                source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-video.png")}
+                                source={  images.imgvideo}
                             />
                             <Text style={styles.titleAccueil}>
                                 Sébastien Bazin
@@ -79,7 +80,7 @@ function AccueilOrgaScreen({ navigation }) {
                             >
                                 <Image
                                     style={styles.imagewebinaire}
-                                    source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire.png")}
+                                    source={images.webinaire}
                                 />
                                 <View
                                     style={{ flex: 1, flexDirection: "column" }}
@@ -109,7 +110,7 @@ function AccueilOrgaScreen({ navigation }) {
                             >
                                 <Image
                                     style={styles.imagewebinaire}
-                                    source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire2.png")}
+                                    source={images.webinaire}
                                 />
                                 <View
                                     style={{ flex: 1, flexDirection: "column" }}
@@ -144,7 +145,7 @@ function AccueilOrgaScreen({ navigation }) {
                     >
                         <Image
                             style={styles.imageactu}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-actu.png")}
+                            source={  images.actu}
                         />
                         <View
                             style={{
@@ -281,7 +282,7 @@ function AccueilOrgaScreen({ navigation }) {
                         <Text style={titrecitation}>Citation du jour</Text>
                         <Image
                             style={image}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/img-effioz.png")}
+                            source={  images.citation}
                         />
                         <Text style={textperso}>Général Leclerc</Text>
                         <Text style={styles.citation}>

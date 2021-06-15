@@ -12,7 +12,7 @@ function UserScreen({ navigation }) {
                 <View style={styles.contentview}>
                     <Image
                         style={styles.image}
-                        source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-user.png")}
+                        source={  images.user}
                     />
                     <Text style={{ flex: 1 }}>Mon compte</Text>
                 </View>

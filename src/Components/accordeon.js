@@ -3,11 +3,11 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/AntDesign";
 
-export default function Accordeon({ name, name2, navigation, onPressItem = () => null}) {
+export default function Accordeon({ name, content, onPressItem = () => null}) {
     const [isenabled, setEnabled] = React.useState(false);
     const data = [];
-    for (const i in name2) {
-        data.push({ title: name2[i] });
+    for (const i in content) {
+        data.push({ title: content[i] });
     }
 
     return (
@@ -27,6 +27,7 @@ export default function Accordeon({ name, name2, navigation, onPressItem = () =>
                     <Icon name="down" type="AntDesign" size={30} />
                 )}
             </View>
+
             {isenabled ? (
                 <FlatList
                     data={data}

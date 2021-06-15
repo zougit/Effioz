@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 import Accordeon from "../../Components/accordeon";
 import audioBookPlaylist from "../../data/podcastsData";
 import citationPlaylist from "../../data/citationData";
@@ -104,8 +104,7 @@ function RessourceScreen({ navigation }) {
                     renderItem={({ item }) => (
                         <Accordeon
                             name={item.title}
-                            name2={item.content}
-                            navigation={navigation}
+                            content={item.content}
                             onPressItem={(index) => {
                                 if(item.type == types.books){
                                     // naviguer vers livre

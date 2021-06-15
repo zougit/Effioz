@@ -31,7 +31,7 @@ function WebinaireScreen({ navigation }) {
                     >
                         <Image
                             style={styles.imagewebinaire}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire.png")}
+                            source={ images.webinaire}
                         />
                         <View
                             style={{
@@ -99,12 +99,12 @@ function WebinaireScreen({ navigation }) {
                     <Webinaire
                                     name={"Fleur Pellerin"}
                                     navigation={navigation}
-                                    source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire.png")}
+                                    source={ images.webinaire}
                                 />
                     <Webinaire
                                     name={"Fleur Pellerin"}
                                     navigation={navigation}
-                                    source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire.png")}
+                                    source={ images.webinaire}
                                 />
 
                 </View>

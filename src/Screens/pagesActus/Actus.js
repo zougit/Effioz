@@ -17,7 +17,7 @@ function ActusScreen({ navigation }) {
                             </Text>
                             <Image
                                 style={styles.imageactu}
-                                source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-actu.png")}
+                                source={images.actu}
                             />
                         </View>
                         <View style={{ flex: 1, margin: 10 }}>
@@ -68,14 +68,14 @@ function ActusScreen({ navigation }) {
                                 "Comment l'innovation RH transforme l'entreprise..."
                             }
                             navigation={navigation}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-actu.png")}
+                            source={images.actu}
                         />
                      <Articleview
                             name={
                                 "Comment l'innovation RH transforme l'entreprise..."
                             }
                             navigation={navigation}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-actu.png")}
+                            source={images.actu}
                         />
                 </View>
             </ScrollView>

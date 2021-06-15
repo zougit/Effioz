@@ -2,6 +2,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, Modal, Button, Alert } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import images from "../../images";
 
 function AccueilAdminScreen({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -25,7 +26,7 @@ function AccueilAdminScreen({ navigation }) {
 
                         <Image
                             style={styles.video}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-video.png")}
+                            source={  images.imgvideo}
                         />
                         <Text style={styles.titleAccueil}>Sébastien Bazin</Text>
                         <Text>PDG du groupe Accor</Text>
@@ -60,7 +61,7 @@ function AccueilAdminScreen({ navigation }) {
                         >
                             <Image
                                 style={styles.imagewebinaire}
-                                source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire.png")}
+                                source={ images.webinaire}
                             />
                             <View style={{ flex: 1, flexDirection: "column" }}>
                                 <Text style={{ fontWeight: "bold" }}>
@@ -88,7 +89,7 @@ function AccueilAdminScreen({ navigation }) {
                         >
                             <Image
                                 style={styles.imagewebinaire}
-                                source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire2.png")}
+                                source={  images.webinaire2}
                             />
                             <View style={{ flex: 1, flexDirection: "column" }}>
                                 <Text style={{ fontWeight: "bold" }}>
@@ -121,7 +122,7 @@ function AccueilAdminScreen({ navigation }) {
                 >
                     <Image
                         style={styles.imageactu}
-                        source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-actu.png")}
+                        source={  images.actu}
                     />
                     <View
                         style={{
@@ -231,7 +232,7 @@ function AccueilAdminScreen({ navigation }) {
                         <Text style={titrecitation}>Citation du jour</Text>
                         <Image
                             style={image}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/img-effioz.png")}
+                            source={  images.citation}
                         />
                         <Text style={textperso}>Général Leclerc</Text>
                         <Text style={styles.citation}>

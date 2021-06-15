@@ -17,11 +17,13 @@ import Webinaire from "../../Components/webinaire";
 import Articleview from "../../Components/articleview";
 import Titre from "../../Components/titre";
 import Video from "../../Components/video";
+import Carousel from "../../Components/carousel";
+import images from "../../images/index";
 
 const { height, width } = Dimensions.get("window");
 
 function AccueilScreen({ navigation }) {
-    const [modalVisible, setModalVisible] = React.useState(false);
+    const [modalVisible, setModalVisible] = React.useState(true);
 
     const openAcceuil = () => {
         setModalVisible(!modalVisible);
@@ -40,13 +42,7 @@ function AccueilScreen({ navigation }) {
                             lien={"Actus"}
                         />
 
-                        <Articleview
-                            name={
-                                "Comment l'innovation RH transforme l'entreprise..."
-                            }
-                            navigation={navigation}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-actu.png")}
-                        />
+                        <Carousel navigation={navigation} />
 
                         <View
                             style={{
@@ -61,9 +57,8 @@ function AccueilScreen({ navigation }) {
                             />
 
                             <Video
-                                source={
-                                    "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"
-                                }
+                                source={"http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4"}
+                                
                             />
 
                             <Text style={styles.titleAccueilActu}>
@@ -88,7 +83,7 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Fleur Pellerin"}
                                 navigation={navigation}
-                                source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire.png")}
+                                source={images.webinaire}
                             />
 
                             <Text style={styles.row} />
@@ -96,7 +91,7 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Cédric Villani"}
                                 navigation={navigation}
-                                source={require("C:/Users/Giovanni/Desktop/Effioz/image/image-webinaire2.png")}
+                                source={images.webinaire2}
                             />
                         </View>
                     </View>
@@ -198,7 +193,7 @@ function AccueilScreen({ navigation }) {
                         <Text style={titrecitation}>Citation du jour</Text>
                         <Image
                             style={image}
-                            source={require("C:/Users/Giovanni/Desktop/Effioz/image/img-effioz.png")}
+                            source={images.citation}
                         />
                         <Text style={textperso}>Général Leclerc</Text>
                         <Text style={styles.citation}>

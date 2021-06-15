@@ -21,7 +21,7 @@ export default function Citation({ indexsrc }) {
 
 const styles = StyleSheet.create({
     contentview: {
-        flex: 3,
+        flex: 1,
         alignItems: "center",
         justifyContent: "center",
     },
@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 20,
         color: "orange",
+        marginBottom: 20,
     },
 
     citation: {
-        flex: 2,
+        flex: 1,
         alignItems: "center",
         justifyContent: "center",
         color: "black",
@@ -45,5 +46,6 @@ const styles = StyleSheet.create({
         width: 90,
         height: 90,
         borderRadius: 400 / 2,
+        marginBottom: 20,
     },
 });

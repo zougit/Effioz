@@ -30,6 +30,7 @@ import ActuListScreen from "./src/listes/ActuList";
 import AccueilOrgaScreen from "./src/Screens/pagesActus/Acceuil-orga";
 import GrpListScreen from "./src/listes/GroupeList";
 import GrpAdminScreen from "./src/listes/Grp-admin";
+import images from "./src/images";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,7 +49,7 @@ const headeroptionActus = ({ navigation }) => ({
             >
                 <Image
                     style={styles.menuIcon}
-                    source={require("C:/Users/Giovanni/Desktop/Effioz/image/img-menu.png")}
+                    source={images.menu}
                 />
             </TouchableOpacity>
             <StatusBar animated={true} barStyle={"light-content"} />
@@ -69,7 +70,7 @@ const headeroptionRes = ({ navigation }) => ({
             >
                 <Image
                     style={styles.menuIcon}
-                    source={require("C:/Users/Giovanni/Desktop/Effioz/image/img-menu.png")}
+                    source={images.menu}
                 />
             </TouchableOpacity>
             <StatusBar animated={true} barStyle={"light-content"} />
