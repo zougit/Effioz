@@ -19,6 +19,7 @@ function GrpAdminScreen({ navigation }) {
     const [list, setlist] = useState(data);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible2, setModalVisible2] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(-1);
     const [isModif, setIsModif] = useState(false);
     const [text, setTextName] = useState("");
 
@@ -34,17 +35,20 @@ function GrpAdminScreen({ navigation }) {
     }
 
     const supprgrp = (index) => {
+        console.log('supprgrp', {index});
         list.splice(index, 1);
         setlist(list);
         setModalVisible(!modalVisible);
-        console.log(index);
     };
 
-    const gerergrp = () => {
+    const gerergrp = (index) => {
         setModalVisible(!modalVisible);
+        setCurrentIndex(index);
     };
 
-    const renderItem = ({ item, index }) => (
+    const renderItem = ({ item, index }) => {
+        console.log({item: item.title, index})
+        return (
         <View
             style={{
                 flex: 0.5,
@@ -58,69 +62,9 @@ function GrpAdminScreen({ navigation }) {
                 <Text style={{ fontWeight: "bold", width: 250 }}>{item.title}</Text>
                 <Text>*dernier message*</Text>
             </View>
-            <Text onPress={() => gerergrp()}>gerer</Text>
-
-            <Modal
-                //animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    setModalVisible(!modalVisible);
-                }}
-            >
-                <View style={styles.title}>
-                    <View style={styles.modalView}>
-
-                        <Text style={styles.btnExit} onPress={() => gerergrp()}>
-                            quitter
-                        </Text>
-
-                        <Text style={{ fontSize: 25, marginBottom: 20 }}>
-                            Gérer
-                        </Text>
-
-                        <Text
-                            style={{ fontSize: 20 }}
-                            onPress={() => setIsModif(!isModif)}
-                        >
-                            Modifier
-                        </Text>
-
-                        {isModif ? (
-                            <View>
-                                <Text style={{ fontSize: 25 }}>Nom:</Text>
-
-                                <TextInput
-                                    style={styles.inputproduit}
-                                    placeholder="insérer un nom"
-                                    onChangeText={(textName) => setTextName(textName)}
-                                >
-                                    <Text> {list[index].title} </Text>
-                                </TextInput>
-
-                                <TouchableOpacity
-                                    style={styles.btnSubmit}
-                                    onPress={() => alert("Nope")}
-                                >
-                                    <Text style={{ fontSize: 22 }}>
-                                        {" "}
-                                        submit{" "}
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
-                        ) : (
-                            <Text
-                                style={{ fontSize: 20 }}
-                                onPress={() => supprgrp(index)}
-                            >
-                                Supprimer
-                            </Text>
-                        )}
-                    </View>
-                </View>
-            </Modal>
+            <Text onPress={() => gerergrp(index)}>gerer</Text>
         </View>
-    );
+    )}
     
 
     return (
@@ -211,6 +155,66 @@ function GrpAdminScreen({ navigation }) {
                                     </Text>
                                 </TouchableOpacity>
                             </View>
+                    </View>
+                </View>
+            </Modal>
+
+            <Modal
+                //animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.title}>
+                    <View style={styles.modalView}>
+
+                        <Text style={styles.btnExit} onPress={() => gerergrp()}>
+                            quitter
+                        </Text>
+
+                        <Text style={{ fontSize: 25, marginBottom: 20 }}>
+                            Gérer
+                        </Text>
+
+                        <Text
+                            style={{ fontSize: 20 }}
+                            onPress={() => setIsModif(!isModif)}
+                        >
+                            Modifier
+                        </Text>
+
+                        {isModif ? (
+                            <View>
+                                <Text style={{ fontSize: 25 }}>Nom:</Text>
+
+                                <TextInput
+                                    style={styles.inputproduit}
+                                    placeholder="insérer un nom"
+                                    onChangeText={(textName) => setTextName(textName)}
+                                >
+                                    <Text> {list[currentIndex].title} </Text>
+                                </TextInput>
+
+                                <TouchableOpacity
+                                    style={styles.btnSubmit}
+                                    onPress={() => alert("Nope")}
+                                >
+                                    <Text style={{ fontSize: 22 }}>
+                                        {" "}
+                                        submit{" "}
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        ) : (
+                            <Text
+                                style={{ fontSize: 20 }}
+                                onPress={() => supprgrp(currentIndex)}
+                            >
+                                Supprimer
+                            </Text>
+                        )}
                     </View>
                 </View>
             </Modal>
