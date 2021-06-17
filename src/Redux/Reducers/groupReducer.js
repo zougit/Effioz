@@ -1,11 +1,13 @@
 import { ADD_GROUP } from '../ActionTypes'
-
-const initialState = [];
-
+const initialState = {
+	groups: [],
+	groupsLoading: false,
+}
 export default (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_GROUP:
-			return [...state, action.data];
+			const groups = state.groups.concat([action.data])
+			return { ...state, groups, groupsLoading: false }
 		default:
 			return state
 	}

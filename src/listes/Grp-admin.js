@@ -269,8 +269,9 @@ const styles = StyleSheet.create({
     },
 });
 
-const mapStateToProps = (state) => {
-    return state;
-};
+const mapStateToProps = state => ({
+    groups: state.groups.groups,
+    groupsLoading: state.groups.groupsLoading
+})
 
 export default connect(mapStateToProps, actions)(GrpAdminScreen);
