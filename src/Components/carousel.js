@@ -1,6 +1,10 @@
 import * as React from "react";
 import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import {
+    FlatList,
+    ScrollView,
+    TouchableWithoutFeedback,
+} from "react-native-gesture-handler";
 import Articleview from "./articleview";
 
 const data = [
@@ -8,7 +12,7 @@ const data = [
     { title: "2Comment l'innovation RH transforme l'entreprise..." },
     { title: "3Comment l'innovation RH transforme l'entreprise..." },
     { title: "4Comment l'innovation RH transforme l'entreprise..." },
-    { title: "5Comment l'innovation RH transforme l'entreprise..." }
+    { title: "5Comment l'innovation RH transforme l'entreprise..." },
 ];
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
@@ -18,7 +22,7 @@ export default function Carousel({ navigation }) {
     const indexRef = React.useRef(Index);
     indexRef.current = Index;
 
-    const onScroll = React.useCallback(event => {
+    const onScroll = React.useCallback((event) => {
         const slideSize = event.nativeEvent.layoutMeasurement.width;
         const index = event.nativeEvent.contentOffset.x / slideSize;
         const roundIndex = Math.round(index);
@@ -31,11 +35,14 @@ export default function Carousel({ navigation }) {
         }
     }, []);
 
+    const scrollToIndex = (index) => {
+        Index.scrollToIndex({animated: true, index: index})
+    };
+
     return (
         <View
             style={{
                 flex: 1,
-          
             }}
         >
             <FlatList
@@ -45,6 +52,7 @@ export default function Carousel({ navigation }) {
                 horizontal
                 pagingEnabled
                 onScroll={onScroll}
+                initialScrollIndex={0}
                 renderItem={({ item }) => (
                     <View style={{ width: windowWidth - 20, flex: 1 }}>
                         <Articleview
@@ -54,19 +62,23 @@ export default function Carousel({ navigation }) {
                         />
                     </View>
                 )}
-                keyExtractor={item => item.title}
+                keyExtractor={(item) => item.title}
             />
             <View style={styles.indicatorContainer}>
                 {data.map((image, index) => (
-                    <View
+                    <TouchableWithoutFeedback
                         key={`${image}_${index}`}
-                        style={[
-                            styles.indicator,
-                            (Index == index
-                                ? styles.activeIndicator
-                                : undefined)
-                        ]}
-                    />
+                        //onPress={(index) => scrollToIndex(index)}
+                    >
+                        <View
+                            style={[
+                                styles.indicator,
+                                Index == index
+                                    ? styles.activeIndicator
+                                    : undefined,
+                            ]}
+                        />
+                    </TouchableWithoutFeedback>
                 ))}
             </View>
         </View>
@@ -88,10 +100,10 @@ const styles = StyleSheet.create({
         borderColor: "grey",
         borderWidth: 1,
         marginHorizontal: 10,
-        marginBottom: 10
+        marginBottom: 10,
     },
     activeIndicator: {
         backgroundColor: "orange",
-        borderWidth: 0
-    }
+        borderWidth: 0,
+    },
 });

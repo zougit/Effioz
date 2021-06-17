@@ -6,6 +6,7 @@ import audioBookPlaylist from "../../data/podcastsData";
 import citationPlaylist from "../../data/citationData";
 import articlePlaylist from "../../data/articleData";
 import videoPlaylist from "../../data/videoData";
+import bookPlaylist from "../../data/bookData";
 
 const types = {
     books: 'books',
@@ -13,21 +14,26 @@ const types = {
     citations: 'Citations',
     articles: 'Articles', 
     vidéos: 'Vidéos',
- }
+}
+
+const databook = []
+for (const i in bookPlaylist) {
+    databook.push( bookPlaylist[i].title );
+}
 
 const datapod = []
 for (const i in audioBookPlaylist) {
     datapod.push( audioBookPlaylist[i].title );
 }
 
-const dataarticle = []
-for (const i in articlePlaylist) {
-    dataarticle.push( articlePlaylist[i].title );
-}
-
 const datacitation = []
 for (const i in citationPlaylist) {
     datacitation.push( citationPlaylist[i].title );
+}
+
+const dataarticle = []
+for (const i in articlePlaylist) {
+    dataarticle.push( articlePlaylist[i].title );
 }
 
 const datavideo = []
@@ -38,7 +44,7 @@ for (const i in videoPlaylist) {
 const data = [
     {
         title: "livres",
-        content: ["livre1", "livre2", "livre3", "livre4", "livre5"],
+        content: databook,
         type: types.books,
     },
     {
@@ -65,6 +71,14 @@ const data = [
 
 function RessourceScreen({ navigation }) {
     
+    const openBooks = (index) => {
+    navigation.navigate({
+        name: 'Books',
+        params: { index },
+        // merge: true,
+      });
+    };
+
     const openPodcasts = (index) => {
     navigation.navigate({
         name: 'Podcasts',
@@ -107,7 +121,7 @@ function RessourceScreen({ navigation }) {
                             content={item.content}
                             onPressItem={(index) => {
                                 if(item.type == types.books){
-                                    // naviguer vers livre
+                                    openBooks(index)
                                 } 
                                 else if(item.type == types.podcasts) {
                                     openPodcasts(index)

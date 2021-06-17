@@ -6,5 +6,5 @@ export default images = {
     webinaire2: require('./image-webinaire2.png'),
     citation: require('./img-effioz.png'),
     menu: require('./img-menu.png'),
-    imgvideo: require('./image-video.png'),
+    cover: require('./img-cover.png'),
 }

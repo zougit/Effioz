@@ -14,35 +14,37 @@ import { connect } from "react-redux";
 import * as actions from "../Redux/Actions/groupActions";
 
 function GrpAdminScreen({ navigation }) {
-    const data = [
-        { title: "grp 1" },
-        { title: "grp 2" },
-        { title: "grp 3" },
-    ];
-    const [list, setlist] = useState(data);
-    const [Index, setindex] = useState(data.length+1);
-    const [modalVisible, setModalVisible] = useState(false);
-    const [isModif, setisModif] = useState(false);
+    const data = [{ title: "grp 1" }, { title: "grp 2" }, { title: "grp 3" }];
 
-    const addGroup = () => {
-        list.push({ title: `grp ${Index}` });
+    const [list, setlist] = useState(data);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisible2, setModalVisible2] = useState(false);
+    const [isModif, setIsModif] = useState(false);
+    const [text, setTextName] = useState("");
+
+    const addGroup = (name) => {
+        list.push({ title: `${name}` });
         setlist(list);
-        setindex(Index + 1);
-        //alert("groupe ajouté")
+        // alert("groupe ajouté")
+        setModalVisible2(!modalVisible2);
     };
+
+    const openAdd= () => {
+        setModalVisible2(!modalVisible2);
+    }
 
     const supprgrp = (index) => {
         list.splice(index, 1);
         setlist(list);
-        setindex(Index - 1);
-       // setModalVisible(!modalVisible);
+        setModalVisible(!modalVisible);
+        console.log(index);
     };
 
     const gerergrp = () => {
         setModalVisible(!modalVisible);
     };
 
-    const Item = ({ title, index }) => (
+    const renderItem = ({ item, index }) => (
         <View
             style={{
                 flex: 0.5,
@@ -51,16 +53,15 @@ function GrpAdminScreen({ navigation }) {
                 marginBottom: 10,
             }}
         >
-            
             <Image style={{ width: 70, height: 70 }} source={images.grp} />
             <View style={{ flex: 1, flexDirection: "column", marginLeft: 10 }}>
-                <Text style={{ fontWeight: "bold", width: 250 }}>{title}</Text>
+                <Text style={{ fontWeight: "bold", width: 250 }}>{item.title}</Text>
                 <Text>*dernier message*</Text>
             </View>
             <Text onPress={() => gerergrp()}>gerer</Text>
 
             <Modal
-                animationType="slide"
+                //animationType="slide"
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
@@ -69,11 +70,10 @@ function GrpAdminScreen({ navigation }) {
             >
                 <View style={styles.title}>
                     <View style={styles.modalView}>
-                        <TouchableOpacity
-                            onPress={() => setModalVisible(!modalVisible)}
-                        >
-                            <Text style={styles.btnExit}>quitter</Text>
-                        </TouchableOpacity>
+
+                        <Text style={styles.btnExit} onPress={() => gerergrp()}>
+                            quitter
+                        </Text>
 
                         <Text style={{ fontSize: 25, marginBottom: 20 }}>
                             Gérer
@@ -81,7 +81,7 @@ function GrpAdminScreen({ navigation }) {
 
                         <Text
                             style={{ fontSize: 20 }}
-                            onPress={() => setisModif(!isModif)}
+                            onPress={() => setIsModif(!isModif)}
                         >
                             Modifier
                         </Text>
@@ -89,10 +89,11 @@ function GrpAdminScreen({ navigation }) {
                         {isModif ? (
                             <View>
                                 <Text style={{ fontSize: 25 }}>Nom:</Text>
+
                                 <TextInput
                                     style={styles.inputproduit}
                                     placeholder="insérer un nom"
-                                    //onChangeText={(textName) => setTextName(textName)}
+                                    onChangeText={(textName) => setTextName(textName)}
                                 >
                                     <Text> {list[index].title} </Text>
                                 </TextInput>
@@ -120,9 +121,7 @@ function GrpAdminScreen({ navigation }) {
             </Modal>
         </View>
     );
-    const renderItem = ({ item, index }) => (
-        <Item title={item.title} index={index} />
-    );
+    
 
     return (
         <View
@@ -151,50 +150,12 @@ function GrpAdminScreen({ navigation }) {
                         <Text>Administrer et notifier les groupes</Text>
                     </View>
 
-                    <View
-                        style={{
-                            flexDirection: "row",
-                            flex: 1,
-                            alignContent: "center",
-                            justifyContent: "center",
-                            margin: 10,
-                        }}
-                    >
-                        <TouchableOpacity
-                            style={styles.button2}
-                            onPress={() => alert("ok")}
-                        >
-                            <Text
-                                style={{
-                                    color: "#fff",
-                                    fontSize: 17,
-                                    width: 100,
-                                }}
-                            >
-                                conduite de changement
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity
-                            style={styles.button2}
-                            onPress={() => alert("ok")}
-                        >
-                            <Text
-                                style={{
-                                    color: "#fff",
-                                    fontSize: 17,
-                                    width: 100,
-                                }}
-                            >
-                                Valorisation d'équipe
-                            </Text>
-                        </TouchableOpacity>
-                    </View>
+                    
 
                     <View style={{ margin: 5, flex: 1 }}>
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => addGroup()}
+                            onPress={() => openAdd()}
                         >
                             <Text style={{ color: "#fff", fontSize: 20 }}>
                                 Ajouter un groupe
@@ -202,6 +163,7 @@ function GrpAdminScreen({ navigation }) {
                         </TouchableOpacity>
                     </View>
                 </View>
+
                 <FlatList
                     style={{ flex: 2, margin: 10 }}
                     data={list}
@@ -209,6 +171,49 @@ function GrpAdminScreen({ navigation }) {
                     keyExtractor={(item) => item.title}
                 />
             </View>
+
+            <Modal
+                //animationType="slide"
+                transparent={true}
+                visible={modalVisible2}
+                onRequestClose={() => {
+                    setModalVisible2(!modalVisible2);
+                }}
+            >
+                <View style={styles.title}>
+                    <View style={styles.modalView}>
+
+                        <Text style={styles.btnExit} onPress={() => setModalVisible2(!modalVisible2)}>
+                            quitter
+                        </Text>
+
+                        <Text style={{ fontSize: 25, marginBottom: 20 }}>
+                            Ajouter
+                        </Text>
+
+                            <View>
+                                <Text style={{ fontSize: 25 }}>Nom:</Text>
+
+                                <TextInput
+                                    style={styles.inputproduit}
+                                    placeholder="insérer un nom"
+                                    onChangeText={(textName) => setTextName(textName)}
+                                >
+                                </TextInput>
+
+                                <TouchableOpacity
+                                    style={styles.btnSubmit}
+                                    onPress={() => addGroup(text)}
+                                >
+                                    <Text style={{ fontSize: 22 }}>
+                                        {" "}
+                                        submit{" "}
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                    </View>
+                </View>
+            </Modal>
         </View>
     );
 }

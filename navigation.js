@@ -31,6 +31,7 @@ import AccueilOrgaScreen from "./src/Screens/pagesActus/Acceuil-orga";
 import GrpListScreen from "./src/listes/GroupeList";
 import GrpAdminScreen from "./src/listes/Grp-admin";
 import images from "./src/images";
+import BookScreen from "./src/Screens/pagesRes/BookScreen";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -132,6 +133,7 @@ function Ressources() {
             <Stack.Screen name="Citations" component={CitationScreen} />
             <Stack.Screen name="Articles" component={ArticleScreen} />
             <Stack.Screen name="Videos" component={videoScreen} />
+            <Stack.Screen name="Books" component={BookScreen} />
         </Stack.Navigator>
     );
 }
