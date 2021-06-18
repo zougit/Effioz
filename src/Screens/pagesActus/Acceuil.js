@@ -14,11 +14,11 @@ import {
     TouchableWithoutFeedback
 } from "react-native-gesture-handler";
 import Webinaire from "../../Components/webinaire";
-import Articleview from "../../Components/articleview";
 import Titre from "../../Components/titre";
 import Video from "../../Components/video";
 import Carousel from "../../Components/carousel";
-import images from "../../images/index";
+import Images from "../../Images";
+
 
 const { height, width } = Dimensions.get("window");
 
@@ -83,7 +83,7 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Fleur Pellerin"}
                                 navigation={navigation}
-                                source={images.webinaire}
+                                source={Images.webinaire}
                             />
 
                             <Text style={styles.row} />
@@ -91,7 +91,7 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Cédric Villani"}
                                 navigation={navigation}
-                                source={images.webinaire2}
+                                source={Images.webinaire2}
                             />
                         </View>
                     </View>
@@ -177,7 +177,7 @@ function AccueilScreen({ navigation }) {
                     style={{ flex: 1, backgroundColor: "#333" }}
                     onStartShouldSetResponder={() => openAcceuil()}
                 >
-                    <View style={styles.titleuser}>
+                    <View style={styles.titleUser}>
                         <Text
                             style={{
                                 fontSize: 50,
@@ -190,10 +190,10 @@ function AccueilScreen({ navigation }) {
                     </View>
 
                     <View style={styles.contentview}>
-                        <Text style={titrecitation}>Citation du jour</Text>
+                        <Text style={titreCitation}>Citation du jour</Text>
                         <Image
                             style={image}
-                            source={images.citation}
+                            source={Images.citation}
                         />
                         <Text style={textperso}>Général Leclerc</Text>
                         <Text style={styles.citation}>
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth
     },
 
-    titrecitation: {
+    titreCitation: {
         color: "white",
         fontSize: 23,
         marginBottom: 30
@@ -297,9 +297,7 @@ const styles = StyleSheet.create({
     }
 });
 
-const titrecitation = StyleSheet.compose(styles.titrecitation, styles.row);
-const image = StyleSheet.compose(styles.personne, styles.image);
-const textperso = StyleSheet.compose(styles.personne, styles.textenom);
+const titreCitation = StyleSheet.compose(styles.titreCitation, styles.row);
 const titregaucheRes = StyleSheet.compose(styles.Right, styles.titleAccueilRes);
 const titremilieuRes = StyleSheet.compose(
     styles.middle,

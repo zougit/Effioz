@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import List from "../Components/list";
-import images from "../images";
+import Images from "../Images";
 
 function ActuListScreen({ navigation }) {
     return (
@@ -10,7 +10,7 @@ function ActuListScreen({ navigation }) {
             name={["Actu1","Actu2","Actu3","Actu4","Actu5",]}
             navigation={navigation}
             lien={"Actu"}
-            source= {images.actu}
+            source= {Images.actu}
         />
     );
 }

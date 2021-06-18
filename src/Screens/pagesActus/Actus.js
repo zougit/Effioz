@@ -1,7 +1,8 @@
 import * as React from "react";
 import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import Articleview from "../../Components/articleview";
+import Articleview from "../../Components/articleView";
+import styles from "../../Components/styles"
 
 const {height,width} = Dimensions.get('window');
 
@@ -16,8 +17,8 @@ function ActusScreen({ navigation }) {
                                 l'entreprise...{" "}
                             </Text>
                             <Image
-                                style={styles.imageactu}
-                                source={images.actu}
+                                style={styles.imageActu}
+                                source={Images.actu}
                             />
                         </View>
                         <View style={{ flex: 1, margin: 10 }}>
@@ -62,51 +63,25 @@ function ActusScreen({ navigation }) {
                     </ScrollView>
 
                 <View style={{ flex: 0.5 }}>
-                    <Text style={styles.titleAccueil}>Autres Actus</Text>
+                    <Text style={styles.titleAccueilActu}>Autres Actus</Text>
                     <Articleview
                             name={
                                 "Comment l'innovation RH transforme l'entreprise..."
                             }
                             navigation={navigation}
-                            source={images.actu}
+                            source={Images.actu}
                         />
                      <Articleview
                             name={
                                 "Comment l'innovation RH transforme l'entreprise..."
                             }
                             navigation={navigation}
-                            source={images.actu}
+                            source={Images.actu}
                         />
                 </View>
             </ScrollView>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    date: {
-        color: "#aaa",
-        width: 230,
-        height: 30,
-    },
-    imageactu: {
-        width: width,
-        height: 230,
-    },
-    imageautreactu: {
-        width: 110,
-        height: 110,
-    },
-    titleAccueil: {
-        color: "orange",
-        fontWeight: "bold",
-        fontSize: 22,
-        margin: 10,
-    },
-    textactu: {
-        width: 230,
-        height: 80,
-    },
-});
 
 export default ActusScreen;

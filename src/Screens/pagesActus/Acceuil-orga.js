@@ -15,15 +15,15 @@ import {
     TouchableOpacity,
 } from "react-native-gesture-handler";
 import Webinaire from "../../Components/webinaire";
-import Articleview from "../../Components/articleview";
+import Articleview from "../../Components/articleView";
 import Titre from "../../Components/titre";
 import Video from "../../Components/video";
 import Carousel from "../../Components/carousel";
-import images from "../../images/index";
+import Images from "../../Images/index";
 
 const { height, width } = Dimensions.get("window");
 
-function AccueilScreen({ navigation }) {
+function AccueilOrgaScreen({ navigation }) {
     const [modalVisible, setModalVisible] = React.useState(true);
 
     const openAcceuil = () => {
@@ -85,7 +85,7 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Fleur Pellerin"}
                                 navigation={navigation}
-                                source={images.webinaire}
+                                source={Images.webinaire}
                             />
 
                             <Text style={styles.row} />
@@ -93,14 +93,14 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Cédric Villani"}
                                 navigation={navigation}
-                                source={images.webinaire2}
+                                source={Images.webinaire2}
                             />
                         </View>
                     </View>
 
                     <View style={{ backgroundColor: "#AAA", flex: 1 }}>
                         <View style={{ marginLeft: 10, marginRight: 10 }}>
-                            <Text style={styles.titleAccueilRes}>
+                            <Text style={styles.titleAccueilRessources}>
                                 Focus [orga]
                             </Text>
                             <Text style={{ fontWeight: "bold", fontSize: 16 }}>
@@ -196,7 +196,7 @@ function AccueilScreen({ navigation }) {
                                         marginBottom: 10,
                                     }}
                                 >
-                                    <Text style={styles.titleAccueilRes}>
+                                    <Text style={styles.titleAccueilRessources}>
                                         {" "}
                                         Ressources{" "}
                                     </Text>
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
 
-    titleAccueilRes: {
+    titleAccueilRessources: {
         color: "black",
         fontWeight: "bold",
         fontSize: 18,
@@ -340,10 +340,10 @@ const styles = StyleSheet.create({
 const titrecitation = StyleSheet.compose(styles.titrecitation, styles.row);
 const image = StyleSheet.compose(styles.personne, styles.image);
 const textperso = StyleSheet.compose(styles.personne, styles.textenom);
-const titregaucheRes = StyleSheet.compose(styles.Right, styles.titleAccueilRes);
+const titregaucheRes = StyleSheet.compose(styles.Right, styles.titleAccueilRessources);
 const titremilieuRes = StyleSheet.compose(
     styles.middle,
-    styles.titleAccueilRes
+    styles.titleAccueilRessources
 );
 
-export default AccueilScreen;
+export default AccueilOrgaScreen;

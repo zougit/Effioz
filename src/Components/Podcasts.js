@@ -2,7 +2,8 @@ import * as React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Icons from "react-native-vector-icons/Entypo";
 import { Audio } from "expo-av";
-import audioBookPlaylist from "../data/podcastsData";
+import audioBookPlaylist from "../Data/podcastsData";
+import styles from './styles';
 
 function Podcasts({indexsrc}) {
     const [sound, setSound] = React.useState();
@@ -61,7 +62,7 @@ function Podcasts({indexsrc}) {
     }, [sound]);
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.contentView,styles.backgroundOrange]}>
             <Image
                 style={styles.albumCover}
                 source={{ uri: 
@@ -104,24 +105,5 @@ function Podcasts({indexsrc}) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "rgba(255, 165, 0, 0.4)",
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    albumCover: {
-        width: 250,
-        height: 250
-    },
-    controls: {
-        flexDirection: "row"
-    },
-    control: {
-        margin: 20
-    }
-});
 
 export default Podcasts;

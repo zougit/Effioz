@@ -1,5 +1,5 @@
 import * as React from "react";
-import Podcasts from "../../Components/Podcasts";
+import Podcasts from "../../Components/podcasts";
 
 function PodcastsScreen({ route }) {
     return (

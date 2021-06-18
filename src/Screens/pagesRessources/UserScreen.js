@@ -12,7 +12,7 @@ function UserScreen({ navigation }) {
                 <View style={styles.contentview}>
                     <Image
                         style={styles.image}
-                        source={  images.user}
+                        source={  Images.user}
                     />
                     <Text style={{ flex: 1 }}>Mon compte</Text>
                 </View>

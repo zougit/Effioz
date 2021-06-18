@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Webinaire from "../../Components/webinaire";
+import styles from "../../Components/styles"
 
 const { height, width } = Dimensions.get("window");
 
@@ -30,8 +31,8 @@ function WebinaireScreen({ navigation }) {
                         }}
                     >
                         <Image
-                            style={styles.imagewebinaire}
-                            source={ images.webinaire}
+                            style={styles.imageWebinaire}
+                            source={ Images.webinaire}
                         />
                         <View
                             style={{
@@ -45,7 +46,7 @@ function WebinaireScreen({ navigation }) {
                             >
                                 Fleur Pellerin
                             </Text>
-                            <Text style={styles.textwebinaire}>
+                            <Text style={styles.textWebinaire}>
                                 Ex ministre, femme d'affaire passionée de
                                 nouvelles technologies
                             </Text>
@@ -88,23 +89,23 @@ function WebinaireScreen({ navigation }) {
 
                 <View style={{ flex: 1, marginTop: 10 }}>
                     <TouchableOpacity
-                        style={styles.button}
+                        style={styles.buttonWebinaire}
                         onPress={() => alert("bien noté !")}
                     >
                         <Text style={{ color: "#fff", fontSize: 20 }}>
                             Ajouter à l'Agenda
                         </Text>
                     </TouchableOpacity>
-                    <Text style={styles.titleAccueil}>Autres Webiniaires</Text>
+                    <Text style={styles.titleAccueilActu}>Autres Webiniaires</Text>
                     <Webinaire
                                     name={"Fleur Pellerin"}
                                     navigation={navigation}
-                                    source={ images.webinaire}
+                                    source={ Images.webinaire}
                                 />
                     <Webinaire
                                     name={"Fleur Pellerin"}
                                     navigation={navigation}
-                                    source={ images.webinaire}
+                                    source={ Images.webinaire}
                                 />
 
                 </View>
@@ -112,31 +113,5 @@ function WebinaireScreen({ navigation }) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    imagewebinaire: {
-        width: 140,
-        height: 140,
-    },
-
-    textwebinaire: {
-        height: height / 8,
-        width: width / 2.5,
-        marginRight: 20,
-    },
-
-    titleAccueil: {
-        color: "orange",
-        fontWeight: "bold",
-        fontSize: 22,
-    },
-    button: {
-        alignItems: "center",
-        backgroundColor: "#000",
-        padding: 10,
-        marginRight: 20,
-        marginBottom: 10,
-    },
-});
 
 export default WebinaireScreen;

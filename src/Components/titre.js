@@ -1,5 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import styles from './styles';
 
 export default function Titre({ name, navigation, lien }) {
     return (
@@ -26,11 +27,3 @@ export default function Titre({ name, navigation, lien }) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    titleAccueilActu: {
-        color: "orange",
-        fontWeight: "bold",
-        fontSize: 18,
-    },
-});

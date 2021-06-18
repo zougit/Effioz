@@ -1,4 +1,4 @@
-export default images = {
+export default Images = {
     actu: require('./image-actu.png'),
     grp: require('./image-grp.png'),
     user: require('./image-user.png'),

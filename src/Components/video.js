@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Video } from "expo-av";
 import { Dimensions, StyleSheet } from "react-native";
+import styles from './styles';
 
 const { height, width } = Dimensions.get("window");
 
@@ -15,10 +16,3 @@ export default function video({source}) {
         />
     );
 }
-
-const styles = StyleSheet.create({
-    video: {
-        width: width - 20,
-        height: 210,
-    },
-});

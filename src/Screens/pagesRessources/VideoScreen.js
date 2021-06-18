@@ -1,13 +1,13 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import Video from "../../Components/video";
-import videoPlaylist from "../../data/videoData";
+import Videos from "../../Components/video";
+import videoPlaylist from "../../Data/videoData";
 
-function videoScreen({ route }) {
+function VideoScreen({ route }) {
     return (
         <View style={styles.container} >
             <Text style={styles.title}> {videoPlaylist[route.params?.index].title} </Text>
-            <Video source={videoPlaylist[route.params?.index].source} />
+            <Videos source={videoPlaylist[route.params?.index].source} />
         </View>
     );
 }
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
         margin: 10,
     },
 });
-export default videoScreen;
+export default VideoScreen;

@@ -2,11 +2,11 @@ import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import Accordeon from "../../Components/accordeon";
-import audioBookPlaylist from "../../data/podcastsData";
-import citationPlaylist from "../../data/citationData";
-import articlePlaylist from "../../data/articleData";
-import videoPlaylist from "../../data/videoData";
-import bookPlaylist from "../../data/bookData";
+import audioBookPlaylist from "../../Data/podcastsData";
+import citationPlaylist from "../../Data/citationData";
+import articlePlaylist from "../../Data/articleData";
+import videoPlaylist from "../../Data/videoData";
+import bookPlaylist from "../../Data/bookData";
 
 const types = {
     books: 'books',
@@ -21,9 +21,9 @@ for (const i in bookPlaylist) {
     databook.push( bookPlaylist[i].title );
 }
 
-const datapod = []
+const datapodcast = []
 for (const i in audioBookPlaylist) {
-    datapod.push( audioBookPlaylist[i].title );
+    datapodcast.push( audioBookPlaylist[i].title );
 }
 
 const datacitation = []
@@ -49,7 +49,7 @@ const data = [
     },
     {
         title: "Podcasts",
-        content: datapod ,
+        content: datapodcast ,
         type: types.podcasts,
     },
     {

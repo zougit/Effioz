@@ -1,5 +1,5 @@
 import * as React from "react";
-import Citation from "../../Components/Citation";
+import Citation from "../../Components/citation";
 
 function CitationScreen({ route }) {
     return (

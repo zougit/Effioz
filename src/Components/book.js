@@ -7,18 +7,19 @@ import {
     Image,
     Dimensions,
 } from "react-native";
-import bookPlaylist from "../data/bookData";
+import bookPlaylist from "../Data/bookData";
+import styles from './styles';
 
 const { height, width } = Dimensions.get("window");
 
 export default function Book({ indexsrc }) {
     return (
         <ScrollView
-            style={{ backgroundColor: "rgba(255, 165, 0, 0.4)", flex: 1 }}
+            style={styles.backgroundOrange}
         >
             <View style={{ flex: 1, flexDirection: "row" }}>
                 <Image
-                    style={styles.imageactu}
+                    style={styles.cover}
                     source={bookPlaylist[indexsrc].image}
                 />
                 <View style={{ flex: 1, flexDirection: "column" }}>
@@ -44,15 +45,4 @@ export default function Book({ indexsrc }) {
         </ScrollView>
     );
 }
-const styles = StyleSheet.create({
-    imageactu: {
-        width: width/2.5,
-        height: 230,
-    },
-    titleAccueil: {
-        color: "black",
-        fontWeight: "bold",
-        fontSize: 22,
-        margin: 10,
-    },
-});
+

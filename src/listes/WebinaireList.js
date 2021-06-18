@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import List from "../Components/list";
-import images from "../images";
+import Images from "../Images";
 
 function WebinaireListScreen({ navigation }) {
     return (
@@ -10,7 +10,7 @@ function WebinaireListScreen({ navigation }) {
             name={["webinaire1","webinaire2","webinaire3","webinaire4",]}
             navigation={navigation}
             lien={"Agenda"}
-            source= {images.actu}
+            source= {Images.actu}
         />
     );
 }

@@ -9,14 +9,15 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import images from "../images";
+import images from "../Images";
 import { connect } from "react-redux";
 import * as actions from "../Redux/Actions/groupActions";
 
-function GrpAdminScreen({ navigation }) {
+function GroupeAdminScreen({ navigation }) {
+    //let groups = this.props.groups;
     const data = [{ title: "grp 1" }, { title: "grp 2" }, { title: "grp 3" }];
 
-    const [list, setlist] = useState(data);
+    const [list, setList] = useState(data);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible2, setModalVisible2] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(-1);
@@ -25,7 +26,7 @@ function GrpAdminScreen({ navigation }) {
 
     const addGroup = (name) => {
         list.push({ title: `${name}` });
-        setlist(list);
+        setList(list);
         // alert("groupe ajouté")
         setModalVisible2(!modalVisible2);
     };
@@ -34,14 +35,14 @@ function GrpAdminScreen({ navigation }) {
         setModalVisible2(!modalVisible2);
     }
 
-    const supprgrp = (index) => {
-        console.log('supprgrp', {index});
+    const deleteGroup = (index) => {
+        console.log('deleteGroup', {index});
         list.splice(index, 1);
-        setlist(list);
+        setList(list);
         setModalVisible(!modalVisible);
     };
 
-    const gerergrp = (index) => {
+    const handleGroup = (index) => {
         setModalVisible(!modalVisible);
         setCurrentIndex(index);
     };
@@ -62,7 +63,7 @@ function GrpAdminScreen({ navigation }) {
                 <Text style={{ fontWeight: "bold", width: 250 }}>{item.title}</Text>
                 <Text>*dernier message*</Text>
             </View>
-            <Text onPress={() => gerergrp(index)}>gerer</Text>
+            <Text onPress={() => handleGroup(index)}>gerer</Text>
         </View>
     )}
     
@@ -170,7 +171,7 @@ function GrpAdminScreen({ navigation }) {
                 <View style={styles.title}>
                     <View style={styles.modalView}>
 
-                        <Text style={styles.btnExit} onPress={() => gerergrp()}>
+                        <Text style={styles.btnExit} onPress={() => handleGroup()}>
                             quitter
                         </Text>
 
@@ -210,7 +211,7 @@ function GrpAdminScreen({ navigation }) {
                         ) : (
                             <Text
                                 style={{ fontSize: 20 }}
-                                onPress={() => supprgrp(currentIndex)}
+                                onPress={() => deleteGroup(currentIndex)}
                             >
                                 Supprimer
                             </Text>
@@ -278,4 +279,4 @@ const mapStateToProps = state => ({
     groupsLoading: state.groups.groupsLoading
 })
 
-export default connect(mapStateToProps, actions)(GrpAdminScreen);
+export default connect(mapStateToProps, actions)(GroupeAdminScreen);

@@ -1,9 +1,9 @@
 import * as React from "react";
-import Grp from "../../Components/Groupe";
+import Groupe from "../../Components/groupe";
 
 function GroupeScreen({ route }) {
     return (
-        <Grp />
+        <Groupe />
     );
 }
 

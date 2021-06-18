@@ -1,12 +1,12 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Image, ImageStore } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import {
     FlatList,
     TouchableWithoutFeedback
 } from "react-native-gesture-handler";
-import images from "../images";
+import images from "../Images";
 
-function GrpListScreen({ navigation }) {
+function GroupeListScreen({ navigation }) {
     const data = [
         { title: "groupe1" },
         { title: "groupe2" },
@@ -59,4 +59,4 @@ function GrpListScreen({ navigation }) {
     );
 }
 
-export default GrpListScreen;
+export default GroupeListScreen;

@@ -15,15 +15,15 @@ import {
     TouchableOpacity
 } from "react-native-gesture-handler";
 import Webinaire from "../../Components/webinaire";
-import Articleview from "../../Components/articleview";
+import Articleview from "../../Components/articleView";
 import Titre from "../../Components/titre";
 import Video from "../../Components/video";
 import Carousel from "../../Components/carousel";
-import images from "../../images/index";
+import Images from "../../Images/index";
 
 const { height, width } = Dimensions.get("window");
 
-function AccueilScreen({ navigation }) {
+function AccueilAdminScreen({ navigation }) {
     const [modalVisible, setModalVisible] = React.useState(true);
 
     const openAcceuil = () => {
@@ -84,7 +84,7 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Fleur Pellerin"}
                                 navigation={navigation}
-                                source={images.webinaire}
+                                source={Images.webinaire}
                             />
 
                             <Text style={styles.row} />
@@ -92,7 +92,7 @@ function AccueilScreen({ navigation }) {
                             <Webinaire
                                 name={"Cédric Villani"}
                                 navigation={navigation}
-                                source={images.webinaire2}
+                                source={Images.webinaire2}
                             />
                         </View>
                     </View>
@@ -205,7 +205,7 @@ function AccueilScreen({ navigation }) {
                         <Text style={titrecitation}>Citation du jour</Text>
                         <Image
                             style={image}
-                            source={images.citation}
+                            source={Images.citation}
                         />
                         <Text style={textperso}>Général Leclerc</Text>
                         <Text style={styles.citation}>
@@ -326,4 +326,4 @@ const titremilieuRes = StyleSheet.compose(
     styles.titleAccueilRes
 );
 
-export default AccueilScreen;
+export default AccueilAdminScreen;

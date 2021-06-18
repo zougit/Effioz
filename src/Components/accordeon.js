@@ -2,6 +2,7 @@ import * as React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/AntDesign";
+import styles from './styles';
 
 export default function Accordeon({ name, content, onPressItem = () => null}) {
     const [isenabled, setEnabled] = React.useState(false);
@@ -47,16 +48,3 @@ export default function Accordeon({ name, content, onPressItem = () => null}) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    item: {
-        flex: 1,
-        fontSize: 30,
-        fontWeight: "bold",
-    },
-    item2: {
-        flex: 1,
-        fontSize: 20,
-        marginLeft: 30,
-    },
-});

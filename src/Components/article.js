@@ -1,6 +1,7 @@
 import * as React from "react";
 import { ScrollView, View, Text, StyleSheet, Image, Dimensions } from "react-native";
-import articlePlaylist from "../data/articleData";
+import articlePlaylist from "../Data/articleData";
+import styles from './styles';
 
 const { height, width } = Dimensions.get("window");
 
@@ -27,20 +28,3 @@ export default function Article({ indexsrc }) {
         </ScrollView>
     );
 }
-const styles = StyleSheet.create({
-    date: {
-        color: "#aaa",
-        width: 230,
-        height: 30,
-    },
-    imageactu: {
-        width: width,
-        height: 230,
-    },
-    titleAccueil: {
-        color: "black",
-        fontWeight: "bold",
-        fontSize: 22,
-        margin: 10,
-    },
-});

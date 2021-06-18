@@ -5,7 +5,8 @@ import {
     ScrollView,
     TouchableWithoutFeedback,
 } from "react-native-gesture-handler";
-import Articleview from "./articleview";
+import Articleview from "./articleView";
+import styles from './styles';
 
 const data = [
     { title: "Comment l'innovation RH transforme l'entreprise..." },
@@ -58,7 +59,7 @@ export default function Carousel({ navigation }) {
                         <Articleview
                             name={item.title}
                             navigation={navigation}
-                            source={images.actu}
+                            source={Images.actu}
                         />
                     </View>
                 )}
@@ -85,25 +86,3 @@ export default function Carousel({ navigation }) {
     );
 }
 
-const styles = StyleSheet.create({
-    indicatorContainer: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        width: windowWidth,
-        zIndex: 2,
-    },
-    indicator: {
-        width: 15,
-        height: 15,
-        borderRadius: 7.5,
-        borderColor: "grey",
-        borderWidth: 1,
-        marginHorizontal: 10,
-        marginBottom: 10,
-    },
-    activeIndicator: {
-        backgroundColor: "orange",
-        borderWidth: 0,
-    },
-});

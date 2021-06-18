@@ -4,7 +4,7 @@ import { persistStore, persistCombineReducers } from "redux-persist";
 import GroupReducers from "./Reducers/groupReducer"
 
 const reducer = {
-	grp: GroupReducers,
+	groups: GroupReducers,
 }
 
 const persistConfig = {

@@ -1,15 +1,11 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import styles from './styles';
 
 function Grp({ navigation }) {
     return (
         <View
-            style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "rgba(255, 165, 0, 0.4)",
-            }}
+            style={[styles.contentView,styles.backgroundOrange]}
         >
             <Text>*insert chat de groupe*</Text>
         </View>

@@ -11,27 +11,28 @@ import IconE from "react-native-vector-icons/EvilIcons";
 import IconM from "react-native-vector-icons/MaterialIcons";
 import ParamScreen from "./src/Screens/params";
 
-import UserScreen from "./src/Screens/pagesRes/User";
-import RessourceScreen from "./src/Screens/pagesRes/Ressources";
-import PrgmScreen from "./src/Screens/pagesRes/Programme";
-import PodcastsScreen from "./src/Screens/pagesRes/PodcastsScreen";
-import CitationScreen from "./src/Screens/pagesRes/CitationsScreen";
-import ArticleScreen from "./src/Screens/pagesRes/ArticlesScreen";
-import videoScreen from "./src/Screens/pagesRes/videoScreen";
-import GroupeScreen from "./src/Screens/pagesRes/GroupeScreen";
+import UserScreen from "./src/Screens/pagesRessources/UserScreen";
+import RessourceScreen from "./src/Screens/pagesRessources/RessourcesScreen";
+import ProgrammeScreen from "./src/Screens/pagesRessources/ProgrammeScreen";
+import PodcastsScreen from "./src/Screens/pagesRessources/PodcastsScreen";
+import CitationScreen from "./src/Screens/pagesRessources/CitationsScreen";
+import ArticleScreen from "./src/Screens/pagesRessources/ArticlesScreen";
+import VideoScreen from "./src/Screens/pagesRessources/VideoScreen";
+import GroupeScreen from "./src/Screens/pagesRessources/GroupeScreen";
+import BookScreen from "./src/Screens/pagesRessources/BookScreen";
 
 import AcceuilScreen from "./src/Screens/pagesActus/Acceuil";
 import ActusScreen from "./src/Screens/pagesActus/Actus";
 import WebinaireScreen from "./src/Screens/pagesActus/Agenda";
 import AccueilAdminScreen from "./src/Screens/pagesActus/Acceuil-admin";
-
-import WebinaireListScreen from "./src/listes/WebinaireList";
-import ActuListScreen from "./src/listes/ActuList";
 import AccueilOrgaScreen from "./src/Screens/pagesActus/Acceuil-orga";
-import GrpListScreen from "./src/listes/GroupeList";
-import GrpAdminScreen from "./src/listes/Grp-admin";
-import images from "./src/images";
-import BookScreen from "./src/Screens/pagesRes/BookScreen";
+
+import WebinaireListScreen from "./src/Listes/WebinaireList";
+import ActuListScreen from "./src/Listes/ActuList";
+import GroupeListScreen from "./src/Listes/GroupeList";
+
+import Images from "./src/Images";
+import GroupeAdmin from "./src/Listes/GroupeAdmin";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -50,7 +51,7 @@ const headeroptionActus = ({ navigation }) => ({
             >
                 <Image
                     style={styles.menuIcon}
-                    source={images.menu}
+                    source={Images.menu}
                 />
             </TouchableOpacity>
             <StatusBar animated={true} barStyle={"light-content"} />
@@ -71,7 +72,7 @@ const headeroptionRes = ({ navigation }) => ({
             >
                 <Image
                     style={styles.menuIcon}
-                    source={images.menu}
+                    source={Images.menu}
                 />
             </TouchableOpacity>
             <StatusBar animated={true} barStyle={"light-content"} />
@@ -103,7 +104,7 @@ function AccueilAdmin() {
     return (
         <Stack.Navigator screenOptions={headeroptionRes}>
             <Stack.Screen name="Accueil Admin" component={AccueilAdminScreen} />
-            <Stack.Screen name="Grp-Admin" component={GrpAdminScreen} />
+            <Stack.Screen name="Grp-Admin" component={GroupeAdmin} />
         </Stack.Navigator>
     );
 }
@@ -116,10 +117,10 @@ function AccueilOrga() {
     );
 }
 
-function Grp() {
+function Groupe() {
     return (
         <Stack.Navigator screenOptions={headeroptionRes}>
-            <Stack.Screen name="Groupes" component={GrpListScreen} />
+            <Stack.Screen name="Groupes" component={GroupeListScreen} />
             <Stack.Screen name="Groupe" component={GroupeScreen} />
         </Stack.Navigator>
     );
@@ -132,16 +133,16 @@ function Ressources() {
             <Stack.Screen name="Podcasts" component={PodcastsScreen} />
             <Stack.Screen name="Citations" component={CitationScreen} />
             <Stack.Screen name="Articles" component={ArticleScreen} />
-            <Stack.Screen name="Videos" component={videoScreen} />
+            <Stack.Screen name="Videos" component={VideoScreen} />
             <Stack.Screen name="Books" component={BookScreen} />
         </Stack.Navigator>
     );
 }
 
-function Prgm() {
+function Programme() {
     return (
         <Stack.Navigator screenOptions={headeroptionRes}>
-            <Stack.Screen name="Programme" component={PrgmScreen} />
+            <Stack.Screen name="Programme" component={ProgrammeScreen} />
         </Stack.Navigator>
     );
 }
@@ -173,7 +174,7 @@ function MyTabs() {
 
             <Tab.Screen
                 name="Programme"
-                component={Prgm}
+                component={Programme}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
                         <IconA
@@ -188,7 +189,7 @@ function MyTabs() {
             />
             <Tab.Screen
                 name="Groupes"
-                component={Grp}
+                component={Groupe}
                 options={{
                     tabBarIcon: ({ color, focused }) => (
                         <IconM
@@ -242,7 +243,7 @@ function MyDrawers() {
             <Drawer.Screen name="paramètres" component={ParamScreen} />
             <Drawer.Screen name="Accueil-orga" component={AccueilOrga} />
             <Drawer.Screen name="Accueil-admin" component={AccueilAdmin} />
-            <Drawer.Screen name="Grp-admin" component={GrpAdminScreen} />
+            <Drawer.Screen name="Grp-admin" component={GroupeAdmin} />
         </Drawer.Navigator>
     );
 }
