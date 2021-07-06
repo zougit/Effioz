@@ -6,10 +6,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerActions } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
 import IconA from "react-native-vector-icons/AntDesign";
 import IconE from "react-native-vector-icons/EvilIcons";
 import IconM from "react-native-vector-icons/MaterialIcons";
-import ParamScreen from "./src/Screens/params";
 
 import UserScreen from "./src/Screens/pagesRessources/UserScreen";
 import RessourceScreen from "./src/Screens/pagesRessources/RessourcesScreen";
@@ -30,15 +30,17 @@ import AccueilOrgaScreen from "./src/Screens/pagesActus/Acceuil-orga";
 import WebinaireListScreen from "./src/Listes/WebinaireList";
 import ActuListScreen from "./src/Listes/ActuList";
 import GroupeListScreen from "./src/Listes/GroupeList";
+import GroupeAdmin from "./src/Listes/GroupeAdmin";
+
+import ParamScreen from "./src/Screens/params";
 
 import Images from "./src/Images";
-import GroupeAdmin from "./src/Listes/GroupeAdmin";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-const headeroptionActus = ({ navigation }) => ({
+const headeroptionActus = ({ navigation, route }) => ({
     headerTitleStyle: { alignSelf: "center" },
     headerStyle: {
         backgroundColor: "#000",
@@ -46,20 +48,25 @@ const headeroptionActus = ({ navigation }) => ({
     headerTintColor: "#fff",
     headerLeft: () => (
         <View>
-            <TouchableOpacity
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            >
-                <Image
-                    style={styles.menuIcon}
-                    source={Images.menu}
-                />
-            </TouchableOpacity>
             <StatusBar animated={true} barStyle={"light-content"} />
+            {route.name == "Effioz" ? (
+                <TouchableOpacity
+                    onPress={() =>
+                        navigation.dispatch(DrawerActions.openDrawer())
+                    }
+                >
+                    <Image style={styles.icon} source={Images.menu} />
+                </TouchableOpacity>
+            ) : (
+                <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()} >
+                    <IconA color="white" name="arrowleft" type="AntDesign" size={30} />
+                </TouchableOpacity>
+            )}
         </View>
     ),
 });
 
-const headeroptionRes = ({ navigation }) => ({
+const headeroptionRes = ({ navigation, route }) => ({
     headerTitleStyle: { alignSelf: "center" },
     headerStyle: {
         backgroundColor: "#000",
@@ -67,15 +74,22 @@ const headeroptionRes = ({ navigation }) => ({
     headerTintColor: "darkorange",
     headerLeft: () => (
         <View>
-            <TouchableOpacity
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-            >
-                <Image
-                    style={styles.menuIcon}
-                    source={Images.menu}
-                />
-            </TouchableOpacity>
             <StatusBar animated={true} barStyle={"light-content"} />
+            {route.name == "Groupes" ||
+            route.name == "Programme" ||
+            route.name == "Ressources" ? (
+                <TouchableOpacity
+                    onPress={() =>
+                        navigation.dispatch(DrawerActions.openDrawer())
+                    }
+                >
+                    <Image style={styles.icon} source={Images.menu} />
+                </TouchableOpacity>
+            ) : (
+                <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()} >
+                    <IconA color="white" name="arrowleft" type="AntDesign" size={30} />
+                </TouchableOpacity>
+            )}
         </View>
     ),
 });
@@ -264,7 +278,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
 
-    menuIcon: {
+    icon: {
         tintColor: "white",
         width: 30,
         height: 30,

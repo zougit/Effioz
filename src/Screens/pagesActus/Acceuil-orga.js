@@ -234,7 +234,7 @@ function AccueilOrgaScreen({ navigation }) {
 
                     <View style={styles.contentview}>
                         <Text style={titrecitation}>Citation du jour</Text>
-                        <Image style={image} source={images.citation} />
+                        <Image style={image} source={Images.citation} />
                         <Text style={textperso}>Général Leclerc</Text>
                         <Text style={styles.citation}>
                             "Lorem ipsum dolor sit amet, consectetur adipiscing

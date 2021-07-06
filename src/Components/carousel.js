@@ -37,7 +37,7 @@ export default function Carousel({ navigation }) {
     }, []);
 
     const scrollToIndex = (index) => {
-        Index.scrollToIndex({animated: true, index: index})
+        Index.scrollToIndex(index)
     };
 
     return (
@@ -69,7 +69,7 @@ export default function Carousel({ navigation }) {
                 {data.map((image, index) => (
                     <TouchableWithoutFeedback
                         key={`${image}_${index}`}
-                        //onPress={(index) => scrollToIndex(index)}
+                        // onPress={() => scrollToIndex(index)}
                     >
                         <View
                             style={[

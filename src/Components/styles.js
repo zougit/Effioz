@@ -199,7 +199,62 @@ const styles = StyleSheet.create({
     
     control: {
         margin: 20
-    }
+    },
+
+    button: {
+        alignItems: "center",
+        backgroundColor: "#000",
+        padding: 10,
+        marginLeft: 20,
+        marginRight: 20,
+    },
+
+    button2: {
+        backgroundColor: "orange",
+        padding: 10,
+        marginRight: 5,
+    },
+
+    title: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+
+    inputproduit: {
+        justifyContent: "center",
+        fontSize: 25,
+        backgroundColor: "#CCC",
+    },
+
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+
+    btnSubmit: {
+        backgroundColor: "rgba(255, 165, 0, 0.7)",
+        marginTop: 20,
+        marginBottom: -10,
+    },
+
+    btnExit: {
+        color: "red",
+        marginLeft: 80,
+        marginTop: -30,
+        marginRight: -20,
+    },
 });
 
 
