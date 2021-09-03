@@ -10,16 +10,14 @@ import {
 } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import images from "../Images";
-import { connect, useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import * as actions from "../Redux/Actions/groupActions";
 import styles from "../Components/styles";
 
 function GroupeAdminScreen({ navigation}) {
     const groups = useSelector(state => state.groups.groups)
-    console.log(groups);
     const dispatch = useDispatch()
 
-    const [list, setList] = useState(groups);
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisible2, setModalVisible2] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(-1);
@@ -27,24 +25,19 @@ function GroupeAdminScreen({ navigation}) {
     const [text, setTextName] = useState("");
     
     const addGroups = () => {
-        list.push({ title: `${text}` });
-        setList(list);
-        // alert("groupe ajouté")
+        dispatch(actions.addGroup({ title: `${text}` }))
         setModalVisible2(!modalVisible2);
-        dispatch({ type: actions.addGroup({title : `${text}`}).type })
     };
     
-    const deleteGroups = (index) => {
-        list.splice(index, 1);
-        setList(list);
-        setModalVisible(!modalVisible);
-        dispatch({ type: actions.deleteGroup(index).type })
-    };
-    
-    const editGroups = () => {
-        list[currentIndex].title = `${text}`
+    const editGroups = (id) => {
+        dispatch(actions.editGroup({ title: `${text}` },id))
         setModalVisible(!modalVisible);
         setIsModif(false);
+    };
+    
+    const deleteGroup = (id) => {
+        dispatch(actions.deleteGroup(id))
+        setModalVisible(!modalVisible);
     };
     
     const openAdd = () => {
@@ -62,6 +55,7 @@ function GroupeAdminScreen({ navigation}) {
     };
     
     const renderItem = ({ item, index }) => {
+        if (!item) return null
         return (
             <View
                 style={{
@@ -76,7 +70,7 @@ function GroupeAdminScreen({ navigation}) {
                     style={{ flex: 1, flexDirection: "column", marginLeft: 10 }}
                 >
                     <Text style={{ fontWeight: "bold", width: 250 }}>
-                        {item.title}
+                        {item.title ?? "No name"}
                     </Text>
                     <Text>*dernier message*</Text>
                 </View>
@@ -126,9 +120,9 @@ function GroupeAdminScreen({ navigation}) {
 
                 <FlatList
                     style={{ flex: 2, margin: 10 }}
-                    data={list}
+                    data={groups}
                     renderItem={renderItem}
-                    keyExtractor={(item) => item.title}
+                    keyExtractor={(item,index) => index.toString()}
                 />
             </View>
 
@@ -171,12 +165,12 @@ function GroupeAdminScreen({ navigation}) {
                                         setTextName(textName)
                                     }
                                 >
-                                    <Text> {list[currentIndex].title} </Text>
+                                    <Text> {groups[currentIndex].title} </Text>
                                 </TextInput>
 
                                 <TouchableOpacity
                                     style={styles.btnSubmit}
-                                    onPress={() => editGroups()}
+                                    onPress={() => editGroups(groups[currentIndex].id)}
                                 >
                                     <Text style={{ fontSize: 22 }}>
                                         {" "}
@@ -187,7 +181,7 @@ function GroupeAdminScreen({ navigation}) {
                         ) : (
                             <Text
                                 style={{ fontSize: 20 }}
-                                onPress={() => deleteGroups(currentIndex)}
+                                onPress={() => deleteGroup(groups[currentIndex].id)}
                             >
                                 Supprimer
                             </Text>
@@ -242,9 +236,5 @@ function GroupeAdminScreen({ navigation}) {
     );
 }
 
-const mapStateToProps = (state) => ({
-    groups: state.groups.groups,
-    groupsLoading: state.groups.groupsLoading,
-});
 
-export default connect(mapStateToProps, actions)(GroupeAdminScreen);
+export default GroupeAdminScreen;

@@ -4,6 +4,7 @@ import {
     FlatList,
     TouchableWithoutFeedback
 } from "react-native-gesture-handler";
+import { useSelector } from "react-redux";
 import images from "../Images";
 
 function GroupeListScreen({ navigation }) {
@@ -14,6 +15,7 @@ function GroupeListScreen({ navigation }) {
         { title: "groupe4" },
         { title: "groupe5" }
     ];
+    const groups = useSelector(state => state.groups.groups)
 
     const Item = ({ title }) => (
         <TouchableWithoutFeedback onPress={() => navigation.navigate("Groupe")}>
@@ -51,9 +53,9 @@ function GroupeListScreen({ navigation }) {
         >
             <FlatList
                 style={{ margin: 10 }}
-                data={data}
+                data={groups}
                 renderItem={renderItem}
-                keyExtractor={item => item.title}
+                keyExtractor={(item,index) => index.toString()}
             />
         </View>
     );

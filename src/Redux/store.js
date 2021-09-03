@@ -1,10 +1,12 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createStore } from "redux";
 import { persistStore, persistCombineReducers } from "redux-persist";
-import GroupReducers from "./Reducers/groupReducer"
+import authReducer from './Reducers/authReducer';
+import groupReducer from "./Reducers/groupReducer"
 
 const reducer = {
-	groups: GroupReducers,
+	groups: groupReducer,
+	auth: authReducer,
 }
 
 const persistConfig = {

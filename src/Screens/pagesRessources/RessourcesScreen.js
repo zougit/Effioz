@@ -7,38 +7,39 @@ import citationPlaylist from "../../Data/citationData";
 import articlePlaylist from "../../Data/articleData";
 import videoPlaylist from "../../Data/videoData";
 import bookPlaylist from "../../Data/bookData";
+import styles from "../../Components/styles"
 
 const types = {
-    books: 'books',
-    podcasts: 'podcasts',
-    citations: 'Citations',
-    articles: 'Articles', 
-    vidéos: 'Vidéos',
-}
+    books: "books",
+    podcasts: "podcasts",
+    citations: "Citations",
+    articles: "Articles",
+    vidéos: "Vidéos",
+};
 
-const databook = []
+const databook = [];
 for (const i in bookPlaylist) {
-    databook.push( bookPlaylist[i].title );
+    databook.push(bookPlaylist[i].title);
 }
 
-const datapodcast = []
+const datapodcast = [];
 for (const i in audioBookPlaylist) {
-    datapodcast.push( audioBookPlaylist[i].title );
+    datapodcast.push(audioBookPlaylist[i].title);
 }
 
-const datacitation = []
+const datacitation = [];
 for (const i in citationPlaylist) {
-    datacitation.push( citationPlaylist[i].title );
+    datacitation.push(citationPlaylist[i].title);
 }
 
-const dataarticle = []
+const dataarticle = [];
 for (const i in articlePlaylist) {
-    dataarticle.push( articlePlaylist[i].title );
+    dataarticle.push(articlePlaylist[i].title);
 }
 
-const datavideo = []
+const datavideo = [];
 for (const i in videoPlaylist) {
-    datavideo.push( videoPlaylist[i].title );
+    datavideo.push(videoPlaylist[i].title);
 }
 
 const data = [
@@ -49,7 +50,7 @@ const data = [
     },
     {
         title: "Podcasts",
-        content: datapodcast ,
+        content: datapodcast,
         type: types.podcasts,
     },
     {
@@ -59,8 +60,8 @@ const data = [
     },
     {
         title: "Articles",
-        content: dataarticle, 
-        type: types.articles, 
+        content: dataarticle,
+        type: types.articles,
     },
     {
         title: "Vidéos",
@@ -70,87 +71,73 @@ const data = [
 ];
 
 function RessourceScreen({ navigation }) {
-    
     const openBooks = (index) => {
-    navigation.navigate({
-        name: 'Books',
-        params: { index },
-        // merge: true,
-      });
+        navigation.navigate({
+            name: "Books",
+            params: { index },
+            // merge: true,
+        });
     };
 
     const openPodcasts = (index) => {
-    navigation.navigate({
-        name: 'Podcasts',
-        params: { index },
-        // merge: true,
-      });
+        navigation.navigate({
+            name: "Podcasts",
+            params: { index },
+            // merge: true,
+        });
     };
 
     const openCitations = (index) => {
-    navigation.navigate({
-        name: 'Citations',
-        params: { index },
-        // merge: true,
-      });
+        navigation.navigate({
+            name: "Citations",
+            params: { index },
+            // merge: true,
+        });
     };
 
     const openArticles = (index) => {
-    navigation.navigate({
-        name: 'Articles',
-        params: { index },
-        // merge: true,
-      });
+        navigation.navigate({
+            name: "Articles",
+            params: { index },
+            // merge: true,
+        });
     };
 
     const openVideos = (index) => {
-    navigation.navigate({
-        name: 'Videos',
-        params: { index },
-        // merge: true,
-      });
+        navigation.navigate({
+            name: "Videos",
+            params: { index },
+            // merge: true,
+        });
     };
 
     return (
-            <View style={{backgroundColor: "rgba(255, 165, 0, 0.4)", flex: 1 }}>
-                <FlatList
-                    data={data}
-                    renderItem={({ item }) => (
-                        <Accordeon
-                            name={item.title}
-                            content={item.content}
-                            onPressItem={(index) => {
-                                if(item.type == types.books){
-                                    openBooks(index)
-                                } 
-                                else if(item.type == types.podcasts) {
-                                    openPodcasts(index)
-                                }
-                                else if(item.type == types.citations){
-                                    openCitations(index)
-                                } 
-                                else if(item.type == types.articles){
-                                    openArticles(index)
-                                } 
-                                else if(item.type == types.vidéos){
-                                    openVideos(index)
-                                } 
-                            }}
-                        />
-                    )}
-                    keyExtractor={(item) => item.title}
-                />
-            </View>
+        <View style={styles.containerOrange}>
+            <FlatList
+                data={data}
+                renderItem={({ item }) => (
+                    <Accordeon
+                        name={item.title}
+                        content={item.content}
+                        onPressItem={(index) => {
+                            if (item.type == types.books) {
+                                openBooks(index);
+                            } else if (item.type == types.podcasts) {
+                                openPodcasts(index);
+                            } else if (item.type == types.citations) {
+                                openCitations(index);
+                            } else if (item.type == types.articles) {
+                                openArticles(index);
+                            } else if (item.type == types.vidéos) {
+                                openVideos(index);
+                            }
+                        }}
+                    />
+                )}
+                keyExtractor={(item) => item.title}
+            />
+        </View>
     );
 }
-
-const styles = StyleSheet.create({
-    item: {
-        fontSize: 30,
-        fontWeight: "bold",
-        marginTop: 20,
-        marginLeft: 20,
-    },
-});
 
 export default RessourceScreen;

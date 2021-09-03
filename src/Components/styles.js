@@ -213,6 +213,11 @@ const styles = StyleSheet.create({
         backgroundColor: "orange",
         padding: 10,
         marginRight: 5,
+        marginBottom: 5,
+        borderRadius: 10,
+        alignItems: "center",
+        alignSelf:"center",
+        width:70
     },
 
     title: {
@@ -255,6 +260,41 @@ const styles = StyleSheet.create({
         marginTop: -30,
         marginRight: -20,
     },
+
+    containerOrange: {
+        flex: 1,
+        backgroundColor: "rgba(255, 165, 0, 0.4)",
+    },
+
+    imageUser: {
+        flex: 1,
+        alignContent: "center",
+        justifyContent: "center",
+        width: 200,
+        height: 200,
+    },
+
+    contentUser: {
+        flex: 1.5,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 10,
+    },
+    
+    titleVideo: {
+        color: "black",
+        fontWeight: "bold",
+        fontSize: 22,
+        margin: 10,
+    },
+
+    containerStyle: {
+        borderRadius: 20,
+        backgroundColor: "rgba(255, 165, 0, 0.4)",
+        width: 200,
+        height: 200,
+      }
+
 });
 
 

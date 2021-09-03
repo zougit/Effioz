@@ -1,18 +1,17 @@
 import * as React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import styles from "../../Components/styles"
+
 
 function UserScreen({ navigation }) {
     return (
             <View
-                style={{
-                    backgroundColor: "rgba(255, 165, 0, 0.4)",
-                    flex:1,
-                }}
+                style={styles.containerOrange}
             >
-                <View style={styles.contentview}>
+                <View style={styles.contentUser}>
                     <Image
-                        style={styles.image}
-                        source={  Images.user}
+                        style={styles.imageUser}
+                        source={Images.user}
                     />
                     <Text style={{ flex: 1 }}>Mon compte</Text>
                 </View>
@@ -28,28 +27,5 @@ function UserScreen({ navigation }) {
             </View>
     );
 }
-
-const styles = StyleSheet.create({
-    row: {
-        padding: 4,
-        borderBottomColor: "grey",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-
-    image: {
-        flex: 1,
-        alignContent: "center",
-        justifyContent: "center",
-        width: 200,
-        height: 200,
-    },
-
-    contentview: {
-        flex: 1.5,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 10,
-    },
-});
 
 export default UserScreen;

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import StepIndicator from "react-native-step-indicator";
+import style from "../../Components/styles"
 
 function ProgrammeScreen({ navigation }) {
     const customStyles = {
@@ -29,10 +30,7 @@ function ProgrammeScreen({ navigation }) {
 
     return (
         <View
-            style={{
-                flex: 1,
-                backgroundColor: "rgba(255, 165, 0, 0.4)",
-            }}
+            style={style.containerOrange}
         >
             <Text style={styles.title}>Mes modules en cours </Text>
             <Text style={styles.title2}>module 1</Text>

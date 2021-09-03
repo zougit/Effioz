@@ -40,7 +40,7 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
-const headeroptionActus = ({ navigation, route }) => ({
+const headerOptionActus = ({ navigation, route }) => ({
     headerTitleStyle: { alignSelf: "center" },
     headerStyle: {
         backgroundColor: "#000",
@@ -66,7 +66,7 @@ const headeroptionActus = ({ navigation, route }) => ({
     ),
 });
 
-const headeroptionRes = ({ navigation, route }) => ({
+const headerOptionRessources = ({ navigation, route }) => ({
     headerTitleStyle: { alignSelf: "center" },
     headerStyle: {
         backgroundColor: "#000",
@@ -94,9 +94,11 @@ const headeroptionRes = ({ navigation, route }) => ({
     ),
 });
 
+
+
 function Accueil() {
     return (
-        <Stack.Navigator screenOptions={headeroptionActus}>
+        <Stack.Navigator screenOptions={headerOptionActus}>
             <Stack.Screen name="Effioz" component={AcceuilScreen} />
             <Stack.Screen name="Actu" component={ActusScreen} />
             <Stack.Screen name="Actus" component={ActuListScreen} />
@@ -108,7 +110,7 @@ function Accueil() {
 
 function User() {
     return (
-        <Stack.Navigator screenOptions={headeroptionRes}>
+        <Stack.Navigator screenOptions={headerOptionRessources}>
             <Stack.Screen name="User" component={UserScreen} />
         </Stack.Navigator>
     );
@@ -116,7 +118,7 @@ function User() {
 
 function AccueilAdmin() {
     return (
-        <Stack.Navigator screenOptions={headeroptionRes}>
+        <Stack.Navigator screenOptions={headerOptionRessources}>
             <Stack.Screen name="Accueil Admin" component={AccueilAdminScreen} />
             <Stack.Screen name="Grp-Admin" component={GroupeAdmin} />
         </Stack.Navigator>
@@ -125,7 +127,7 @@ function AccueilAdmin() {
 
 function AccueilOrga() {
     return (
-        <Stack.Navigator screenOptions={headeroptionRes}>
+        <Stack.Navigator screenOptions={headerOptionRessources}>
             <Stack.Screen name="Accueil Orga" component={AccueilOrgaScreen} />
         </Stack.Navigator>
     );
@@ -133,7 +135,7 @@ function AccueilOrga() {
 
 function Groupe() {
     return (
-        <Stack.Navigator screenOptions={headeroptionRes}>
+        <Stack.Navigator screenOptions={headerOptionRessources}>
             <Stack.Screen name="Groupes" component={GroupeListScreen} />
             <Stack.Screen name="Groupe" component={GroupeScreen} />
         </Stack.Navigator>
@@ -142,7 +144,7 @@ function Groupe() {
 
 function Ressources() {
     return (
-        <Stack.Navigator screenOptions={headeroptionRes}>
+        <Stack.Navigator screenOptions={headerOptionRessources}>
             <Stack.Screen name="Ressources" component={RessourceScreen} />
             <Stack.Screen name="Podcasts" component={PodcastsScreen} />
             <Stack.Screen name="Citations" component={CitationScreen} />
@@ -155,7 +157,7 @@ function Ressources() {
 
 function Programme() {
     return (
-        <Stack.Navigator screenOptions={headeroptionRes}>
+        <Stack.Navigator screenOptions={headerOptionRessources}>
             <Stack.Screen name="Programme" component={ProgrammeScreen} />
         </Stack.Navigator>
     );
